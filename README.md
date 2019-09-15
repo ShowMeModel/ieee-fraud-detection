@@ -15,8 +15,12 @@ Input files are stored in archive `data/fraud_dataset.7z`
 
 ### LightGBM (ROC score 0.9447)
 
-▸ File `solutions/lightgbm[ROC-0.9447]/IEEE-CIS Fraud Detection.ipynb`
+Jupyter notebook located in file ▸ `solutions/lightgbm[ROC-0.9447]/IEEE-CIS Fraud Detection.ipynb`
 
 ### LightGBM (ROC score 0.9452)
 
-▸ File `solutions/lightgbm[ROC-0.9452]/IEEE-CIS Fraud Detection (lgbm+alexa).ipynb`
+Jupyter notebook ▸ `solutions/lightgbm[ROC-0.9452]/IEEE-CIS Fraud Detection (lgbm+alexa).ipynb`
+
+### 8-fold LightGBM (ROC score 0.????)
+
+Jupyter notebook ▸ `solutions/lightgbm[8fold]/`
