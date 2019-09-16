@@ -13017,6 +13017,45 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
+<style type="text/css">
+    
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+
+    </style>
 
 
 <style type="text/css">
@@ -13050,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13271,15 +13310,15 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">########################### DATA LOAD</span>
 <span class="c1">#################################################################################</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Load Data&#39;</span><span class="p">)</span>
-<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;./input/ieee-fe-with-some-eda/train_df.pkl&#39;</span><span class="p">)</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../../data/input/ieee-fe-with-some-eda/train_df.pkl&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">LOCAL_TEST</span><span class="p">:</span>
     <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;DT_M&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;DT_M&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">train_df</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;DT_M&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;DT_M&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;./input/ieee-fe-with-some-eda/test_df.pkl&#39;</span><span class="p">)</span>
+    <span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../../data/input/ieee-fe-with-some-eda/test_df.pkl&#39;</span><span class="p">)</span>
 
-<span class="n">remove_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;./input/ieee-fe-with-some-eda/remove_features.pkl&#39;</span><span class="p">)</span>
+<span class="n">remove_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../../data/input/ieee-fe-with-some-eda/remove_features.pkl&#39;</span><span class="p">)</span>
 <span class="n">remove_features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">remove_features</span><span class="p">[</span><span class="s1">&#39;features_to_remove&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape control:&#39;</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -13386,7 +13425,7 @@ Shape control: (590540, 791) (506691, 791)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_raw_emails</span><span class="p">,</span> <span class="n">test_raw_emails</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
@@ -13403,7 +13442,7 @@ Shape control: (590540, 791) (506691, 791)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P_emaildomain&#39;</span><span class="p">,</span> <span class="s1">&#39;R_emaildomain&#39;</span><span class="p">]:</span>
@@ -13524,7 +13563,7 @@ Querying Alexa for ranking of scranton.edu.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">########################### Final features list</span>
@@ -13561,7 +13600,7 @@ Mem. usage decreased to 1116.31 Mb (41.2% reduction)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
@@ -13577,7 +13616,7 @@ Mem. usage decreased to 1116.31 Mb (41.2% reduction)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -14374,8 +14413,8 @@ Mem. usage decreased to 1116.31 Mb (41.2% reduction)
  &#39;id_30_device&#39;: 811091,
  &#39;id_30_version&#39;: 811091,
  &#39;id_31_device&#39;: 811091,
- &#39;P_emaildomain_rank&#39;: 2580.0,
- &#39;P_emaildomain_traffic_rank&#39;: 904.0,
+ &#39;P_emaildomain_rank&#39;: 2564.0,
+ &#39;P_emaildomain_traffic_rank&#39;: 910.0,
  &#39;P_emaildomain_sites&#39;: 5495.0,
  &#39;R_emaildomain_rank&#39;: nan,
  &#39;R_emaildomain_traffic_rank&#39;: nan,
@@ -14390,7 +14429,7 @@ Mem. usage decreased to 1116.31 Mb (41.2% reduction)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">########################### Model Train</span>
@@ -14424,48 +14463,116 @@ Mem. usage decreased to 1116.31 Mb (41.2% reduction)
 <pre>Fold: 0
 516722 73818
 Training until validation scores don&#39;t improve for 100 rounds.
-[200]	training&#39;s auc: 0.949249	valid_1&#39;s auc: 0.933074
-[400]	training&#39;s auc: 0.974823	valid_1&#39;s auc: 0.950615
+[200]	training&#39;s auc: 0.949151	valid_1&#39;s auc: 0.932875
+[400]	training&#39;s auc: 0.974908	valid_1&#39;s auc: 0.950543
+[600]	training&#39;s auc: 0.988108	valid_1&#39;s auc: 0.961124
+[800]	training&#39;s auc: 0.994375	valid_1&#39;s auc: 0.967363
+[1000]	training&#39;s auc: 0.997391	valid_1&#39;s auc: 0.97067
+[1200]	training&#39;s auc: 0.998753	valid_1&#39;s auc: 0.972998
+[1400]	training&#39;s auc: 0.999387	valid_1&#39;s auc: 0.97437
+[1600]	training&#39;s auc: 0.999691	valid_1&#39;s auc: 0.97546
+[1800]	training&#39;s auc: 0.999844	valid_1&#39;s auc: 0.976297
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.999844	valid_1&#39;s auc: 0.976297
+Fold: 1
+516722 73818
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.949678	valid_1&#39;s auc: 0.932012
+[400]	training&#39;s auc: 0.974743	valid_1&#39;s auc: 0.95126
+[600]	training&#39;s auc: 0.98822	valid_1&#39;s auc: 0.962914
+[800]	training&#39;s auc: 0.994405	valid_1&#39;s auc: 0.969128
+[1000]	training&#39;s auc: 0.997348	valid_1&#39;s auc: 0.972712
+[1200]	training&#39;s auc: 0.998732	valid_1&#39;s auc: 0.974839
+[1400]	training&#39;s auc: 0.999382	valid_1&#39;s auc: 0.976266
+[1600]	training&#39;s auc: 0.999694	valid_1&#39;s auc: 0.977297
+[1800]	training&#39;s auc: 0.999847	valid_1&#39;s auc: 0.978145
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.999847	valid_1&#39;s auc: 0.978145
+Fold: 2
+516722 73818
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.948954	valid_1&#39;s auc: 0.926293
+[400]	training&#39;s auc: 0.974607	valid_1&#39;s auc: 0.947734
+[600]	training&#39;s auc: 0.987844	valid_1&#39;s auc: 0.95942
+[800]	training&#39;s auc: 0.994306	valid_1&#39;s auc: 0.965965
+[1000]	training&#39;s auc: 0.997327	valid_1&#39;s auc: 0.969738
+[1200]	training&#39;s auc: 0.998721	valid_1&#39;s auc: 0.972038
+[1400]	training&#39;s auc: 0.999375	valid_1&#39;s auc: 0.973547
+[1600]	training&#39;s auc: 0.999686	valid_1&#39;s auc: 0.974661
+[1800]	training&#39;s auc: 0.999839	valid_1&#39;s auc: 0.975514
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.999839	valid_1&#39;s auc: 0.975514
+Fold: 3
+516722 73818
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.949154	valid_1&#39;s auc: 0.932898
+[400]	training&#39;s auc: 0.975219	valid_1&#39;s auc: 0.950546
+[600]	training&#39;s auc: 0.988271	valid_1&#39;s auc: 0.961258
+[800]	training&#39;s auc: 0.994486	valid_1&#39;s auc: 0.966864
+[1000]	training&#39;s auc: 0.997335	valid_1&#39;s auc: 0.970044
+[1200]	training&#39;s auc: 0.99871	valid_1&#39;s auc: 0.972118
+[1400]	training&#39;s auc: 0.999368	valid_1&#39;s auc: 0.97347
+[1600]	training&#39;s auc: 0.999678	valid_1&#39;s auc: 0.974543
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.975226
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.975226
+Fold: 4
+516723 73817
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.949252	valid_1&#39;s auc: 0.92851
+[400]	training&#39;s auc: 0.975365	valid_1&#39;s auc: 0.948694
+[600]	training&#39;s auc: 0.988061	valid_1&#39;s auc: 0.960168
+[800]	training&#39;s auc: 0.994331	valid_1&#39;s auc: 0.966134
+[1000]	training&#39;s auc: 0.99735	valid_1&#39;s auc: 0.970066
+[1200]	training&#39;s auc: 0.998733	valid_1&#39;s auc: 0.972383
+[1400]	training&#39;s auc: 0.999368	valid_1&#39;s auc: 0.973843
+[1600]	training&#39;s auc: 0.999682	valid_1&#39;s auc: 0.975041
+[1800]	training&#39;s auc: 0.999837	valid_1&#39;s auc: 0.975812
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.999837	valid_1&#39;s auc: 0.975812
+Fold: 5
+516723 73817
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.949614	valid_1&#39;s auc: 0.930857
+[400]	training&#39;s auc: 0.975048	valid_1&#39;s auc: 0.948018
+[600]	training&#39;s auc: 0.988322	valid_1&#39;s auc: 0.95937
+[800]	training&#39;s auc: 0.994442	valid_1&#39;s auc: 0.965426
+[1000]	training&#39;s auc: 0.997332	valid_1&#39;s auc: 0.969029
+[1200]	training&#39;s auc: 0.99873	valid_1&#39;s auc: 0.971542
+[1400]	training&#39;s auc: 0.999376	valid_1&#39;s auc: 0.973092
+[1600]	training&#39;s auc: 0.999686	valid_1&#39;s auc: 0.974134
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.975002
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.975002
+Fold: 6
+516723 73817
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.949769	valid_1&#39;s auc: 0.930406
+[400]	training&#39;s auc: 0.975378	valid_1&#39;s auc: 0.947469
+[600]	training&#39;s auc: 0.988047	valid_1&#39;s auc: 0.958429
+[800]	training&#39;s auc: 0.994326	valid_1&#39;s auc: 0.964608
+[1000]	training&#39;s auc: 0.997305	valid_1&#39;s auc: 0.968203
+[1200]	training&#39;s auc: 0.998706	valid_1&#39;s auc: 0.970525
+[1400]	training&#39;s auc: 0.999369	valid_1&#39;s auc: 0.971996
+[1600]	training&#39;s auc: 0.999683	valid_1&#39;s auc: 0.973115
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.973915
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.973915
+Fold: 7
+516723 73817
+Training until validation scores don&#39;t improve for 100 rounds.
+[200]	training&#39;s auc: 0.949172	valid_1&#39;s auc: 0.924316
+[400]	training&#39;s auc: 0.974886	valid_1&#39;s auc: 0.943466
+[600]	training&#39;s auc: 0.988017	valid_1&#39;s auc: 0.955898
+[800]	training&#39;s auc: 0.994342	valid_1&#39;s auc: 0.962932
+[1000]	training&#39;s auc: 0.997309	valid_1&#39;s auc: 0.967162
+[1200]	training&#39;s auc: 0.998727	valid_1&#39;s auc: 0.96958
+[1400]	training&#39;s auc: 0.999375	valid_1&#39;s auc: 0.971053
+[1600]	training&#39;s auc: 0.999685	valid_1&#39;s auc: 0.972197
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.973148
+Did not meet early stopping. Best iteration is:
+[1800]	training&#39;s auc: 0.99984	valid_1&#39;s auc: 0.973148
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-13-52600bfc188e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     lgb_params<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;n_estimators&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">1800</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span>     lgb_params<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;early_stopping_rounds&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">100</span>
-<span class="ansi-green-fg">---&gt; 12</span><span class="ansi-red-fg">     </span>test_predictions <span class="ansi-blue-fg">=</span> make_predictions<span class="ansi-blue-fg">(</span>train_df<span class="ansi-blue-fg">,</span> test_df<span class="ansi-blue-fg">,</span> features_columns<span class="ansi-blue-fg">,</span> TARGET<span class="ansi-blue-fg">,</span> lgb_params<span class="ansi-blue-fg">,</span> NFOLDS<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-3-5b4f993565b6&gt;</span> in <span class="ansi-cyan-fg">make_predictions</span><span class="ansi-blue-fg">(tr_df, tt_df, features_columns, target, lgb_params, NFOLDS)</span>
-<span class="ansi-green-intense-fg ansi-bold">     28</span>             tr_data<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">     29</span>             valid_sets <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>tr_data<span class="ansi-blue-fg">,</span> vl_data<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">---&gt; 30</span><span class="ansi-red-fg">             </span>verbose_eval <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">200</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">     31</span>         )   
-<span class="ansi-green-intense-fg ansi-bold">     32</span> 
-
-<span class="ansi-green-fg">~/Notebooks/lib/python3.7/site-packages/lightgbm/engine.py</span> in <span class="ansi-cyan-fg">train</span><span class="ansi-blue-fg">(params, train_set, num_boost_round, valid_sets, valid_names, fobj, feval, init_model, feature_name, categorical_feature, early_stopping_rounds, evals_result, verbose_eval, learning_rates, keep_training_booster, callbacks)</span>
-<span class="ansi-green-intense-fg ansi-bold">    216</span>                                     evaluation_result_list=None))
-<span class="ansi-green-intense-fg ansi-bold">    217</span> 
-<span class="ansi-green-fg">--&gt; 218</span><span class="ansi-red-fg">         </span>booster<span class="ansi-blue-fg">.</span>update<span class="ansi-blue-fg">(</span>fobj<span class="ansi-blue-fg">=</span>fobj<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    219</span> 
-<span class="ansi-green-intense-fg ansi-bold">    220</span>         evaluation_result_list <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-green-fg">~/Notebooks/lib/python3.7/site-packages/lightgbm/basic.py</span> in <span class="ansi-cyan-fg">update</span><span class="ansi-blue-fg">(self, train_set, fobj)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1800</span>             _safe_call(_LIB.LGBM_BoosterUpdateOneIter(
-<span class="ansi-green-intense-fg ansi-bold">   1801</span>                 self<span class="ansi-blue-fg">.</span>handle<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1802</span><span class="ansi-red-fg">                 ctypes.byref(is_finished)))
-</span><span class="ansi-green-intense-fg ansi-bold">   1803</span>             self<span class="ansi-blue-fg">.</span>__is_predicted_cur_iter <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-green-fg">False</span> <span class="ansi-green-fg">for</span> _ <span class="ansi-green-fg">in</span> range_<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>__num_dataset<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">   1804</span>             <span class="ansi-green-fg">return</span> is_finished<span class="ansi-blue-fg">.</span>value <span class="ansi-blue-fg">==</span> <span class="ansi-cyan-fg">1</span>
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 
@@ -14475,13 +14582,13 @@ Training until validation scores don&#39;t improve for 100 rounds.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">########################### Export</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">LOCAL_TEST</span><span class="p">:</span>
     <span class="n">test_predictions</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_predictions</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]</span>
-    <span class="n">test_predictions</span><span class="p">[[</span><span class="s1">&#39;TransactionID&#39;</span><span class="p">,</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;submission-20190915-C.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test_predictions</span><span class="p">[[</span><span class="s1">&#39;TransactionID&#39;</span><span class="p">,</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;submission-20190916-A.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
